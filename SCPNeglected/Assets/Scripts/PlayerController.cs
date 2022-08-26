@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement Code Variables")]
     private Rigidbody rb;
     private float mouseSens = 2f;
     private float walkSpeed = 5f;
     private float xRotation = 0f;
     private float yRotation = 0f;
+
+    [Header("UI Stuff")]
+    public int playerHealth = 100;
 
     private void Start()
     {
