@@ -7,12 +7,14 @@ using UnityEngine.UI;
 public class UIScript : MonoBehaviour
 {
     private GameObject inventory;
+    private GameObject crosshair;
     private TMP_Text healthText;
     private PlayerController playerController;
 
     private void Start()
     {
         inventory = GameObject.Find("Inventory");
+        crosshair = GameObject.Find("Crosshair");
         healthText = GameObject.Find("Health").GetComponent<TMP_Text>();
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         healthText.text = "Health: " + playerController.playerHealth;
@@ -22,11 +24,13 @@ public class UIScript : MonoBehaviour
       if (Input.GetKey(KeyCode.Tab))
       {
         inventory.SetActive(true);
+        crosshair.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
       }
       else
       {
         inventory.SetActive(false);
+        crosshair.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
       }
     }
