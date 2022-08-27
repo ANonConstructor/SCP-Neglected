@@ -13,11 +13,17 @@ public class PlayerController : MonoBehaviour
 
     [Header("UI Stuff")]
     public int playerHealth = 100;
+    private UIScript UIScript;
 
+    [Header("Interacting")]
     public Camera playerCamera;
     public LayerMask interactLayer;
     private float interactDistance = 5;
+
+    [Header("Gun Variables")]
     private int damage = 5;
+    public GameObject gun;
+    [SerializeField] private bool hasGun = false;
 
     [Header("Animation")]
     private Animator gunAnimator;
@@ -26,7 +32,8 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         rb = gameObject.GetComponent<Rigidbody>();
-        gunAnimator = GameObject.Find("SCP-127").GetComponent<Animator>();
+        UIScript = GameObject.Find("Canvas").GetComponent<UIScript>();
+        gunAnimator = gun.GetComponent<Animator>();
     }
 
     void Update()
@@ -37,13 +44,17 @@ public class PlayerController : MonoBehaviour
             Interact();
         }
 
-        if (Input.GetMouseButton(0))
+        if(hasGun == true)
         {
-            Shooting();
-        }
-        else
-        {
-            NotShooting();
+            gunAnimator.SetFloat("Speed", rb.velocity.magnitude);
+            if (Input.GetMouseButton(0))
+            {
+                Shooting();
+            }
+            else
+            {
+                NotShooting();
+            }
         }
     }
 
@@ -71,7 +82,6 @@ public class PlayerController : MonoBehaviour
         Vector3 wishDirection = (forwardDirection * axis.y + rightDirection * axis.x);
 
         rb.velocity = wishDirection;
-        gunAnimator.SetFloat("Speed", axis.magnitude);
     }
     private void Interact()
     {
@@ -81,6 +91,21 @@ public class PlayerController : MonoBehaviour
             //Damage if it's an enemy and if it's a pickup, then destroy it
             if(hit.transform.gameObject.tag == "Pickup")
             {
+                //Debug.Log(hit.transform.gameObject.name);
+                switch (hit.transform.gameObject.name)
+                {
+                    case "SCP-127Pickup":
+                        UIScript.AddItemToSlot(2, 1);
+                        hasGun = true;
+                        gun.SetActive(true);
+                        break;
+                    //case "HealthKit":
+                        //UIScript.AddItemToSlot(, )
+                        //break;
+                    default:
+                        Debug.Log("This pickup is named wrong or ");
+                        break;
+                }
                 Destroy(hit.transform.gameObject);
                 //Add code to add the pickup to the inventoru to inventory
             }
@@ -88,10 +113,7 @@ public class PlayerController : MonoBehaviour
             {
                 //Stuff to do when it is a door
             }
-
-
         }
-
     }
     private void Shooting()
     {

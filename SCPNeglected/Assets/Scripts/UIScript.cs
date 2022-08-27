@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
 {
+    public GameObject[] slots;
+    public Sprite[] itemSprites;
     private GameObject inventory;
     private GameObject crosshair;
     private TMP_Text healthText;
@@ -39,5 +41,10 @@ public class UIScript : MonoBehaviour
     {
         playerController.playerHealth += amountOfChange;
         healthText.text = "Health: " + playerController.playerHealth;
+    }
+
+    public void AddItemToSlot(int slotNumber, int spriteNumber)
+    {
+        slots[slotNumber--].GetComponent<Image>().sprite = itemSprites[spriteNumber--];
     }
 }
