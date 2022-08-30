@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [Header("UI Stuff")]
     public int playerHealth = 100;
     private UIScript UIScript;
+    public bool inInventory = false;
 
     [Header("Interacting")]
     public Camera playerCamera;
@@ -47,13 +48,16 @@ public class PlayerController : MonoBehaviour
         if(hasGun == true)
         {
             gunAnimator.SetFloat("Speed", rb.velocity.magnitude);
-            if (Input.GetMouseButton(0))
+            if (inInventory == false)
             {
-                Shooting();
-            }
-            else
-            {
-                NotShooting();
+                if (Input.GetMouseButton(0))
+                {
+                    Shooting();
+                }
+                else
+                {
+                    NotShooting();
+                }
             }
         }
     }
@@ -75,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-        Vector3 axis = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized * walkSpeed * Time.fixedDeltaTime;
+        Vector3 axis = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * walkSpeed * Time.fixedDeltaTime;
 
         Vector3 forwardDirection = Quaternion.Euler(0, yRotation, 0) * Vector3.forward;
         Vector3 rightDirection = Quaternion.Euler(0, 90, 0) * forwardDirection;
@@ -89,19 +93,24 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, interactDistance, interactLayer))
         {
             //Damage if it's an enemy and if it's a pickup, then destroy it
+            //if(hit.transform.gameObject.tag == "Enemy")
+            //{
+            //
+            //}
+
             if(hit.transform.gameObject.tag == "Pickup")
             {
                 //Debug.Log(hit.transform.gameObject.name);
                 switch (hit.transform.gameObject.name)
                 {
                     case "SCP-127Pickup":
-                        UIScript.AddItemToSlot(2, 1);
+                        UIScript.AddItemToSlot(1, 0);
                         hasGun = true;
                         gun.SetActive(true);
                         break;
-                    //case "HealthKit":
-                        //UIScript.AddItemToSlot(, )
-                        //break;
+                    case "MedkitPickup":
+                        UIScript.AddItemToSlot(3, 1);
+                        break;
                     default:
                         Debug.Log("This pickup is named wrong or ");
                         break;

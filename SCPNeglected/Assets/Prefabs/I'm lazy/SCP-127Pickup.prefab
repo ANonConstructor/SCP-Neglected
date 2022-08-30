@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8374776332798694408}
   - component: {fileID: 4980018655962312860}
   - component: {fileID: 5986564456099019762}
-  - component: {fileID: 5986564456099019763}
+  - component: {fileID: 2410405380366760601}
   m_Layer: 3
   m_Name: SCP-127Pickup
   m_TagString: Pickup
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9744456, y: 0.3843685, z: 0.11560632}
   m_Center: {x: -0.8275217, y: -0.24961817, z: 0.16285698}
---- !u!54 &5986564456099019763
+--- !u!54 &2410405380366760601
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
