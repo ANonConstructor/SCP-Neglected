@@ -59,7 +59,6 @@ public class UIScript : MonoBehaviour
         {
             case "MedkitTexture":
                 AlterHealth(50);
-
                 break;
             case "HardWaterTexture":
                 break;
