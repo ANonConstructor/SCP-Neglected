@@ -93,9 +93,9 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\WebApi\ChangesetFromCollabCommitResponse.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\IncomingChanges\Gluon\Errors\ErrorListViewItem.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Configuration\ChannelCertificateUiImpl.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\UI\Progress\ProgressControlsForMigration.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Gluon\IncomingChangesNotifier.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\CloudProjectDownloader\CloudProjectDownloader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\UI\Progress\ProgressControlsForMigration.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\IncomingChanges\Gluon\IncomingChangesTreeView.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\IncomingChanges\Developer\IncomingChangesViewMenu.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\NewIncomingChanges.cs" />
@@ -225,8 +225,8 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\UI\UIElements\ProgressControlsForDialogs.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\UI\Progress\DrawProgressForMigration.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\UI\DrawSearchField.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\Diff\DiffPanel.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\Welcome\DownloadAndInstallOperation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\Diff\DiffPanel.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\IncomingChanges\Developer\DirectoryConflicts\ConflictResolutionState.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Gluon\ProgressOperationHandler.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\WebApi\TokenExchangeResponse.cs" />
@@ -278,10 +278,10 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\PendingChanges\PendingChangesMultiColumnHeader.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\AssetsUtils\Processor\PlasticAssetsProcessor.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\CreateWorkspace\DrawCreateWorkspaceView.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\Changesets\ChangesetsListHeaderState.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\DrawGuiModeSwitcher.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Gluon\UpdateReport\UpdateReportListView.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\CheckWorkspaceTreeNodeStatus.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\Changesets\ChangesetsListHeaderState.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Tool\LaunchTool.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\AssetsUtils\Processor\AssetsProcessor.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\ViewSwitcher.cs" />

@@ -62,8 +62,8 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\Collaborate\Components\Menus\FloatingMenuItem.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\Collaborate\Views\Adapters\IAdapter.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\Collaborate\EditorGameService\SettingsProviderVisuals\LearnMoreVisualHelper.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\Collaborate\Components\IconButton.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\Collaborate\Components\SearchBar.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\Collaborate\Components\IconButton.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\Collaborate\EditorGameService\SettingsProviderVisuals\EnabledVisuals.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\Collaborate\Utilities\Threading.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\Collaborate\Views\MainPageView.cs" />

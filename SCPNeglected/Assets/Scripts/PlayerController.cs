@@ -22,12 +22,20 @@ public class PlayerController : MonoBehaviour
     private float interactDistance = 5;
 
     [Header("Gun Variables")]
+    float fireElapsedTime = 0;
+    private float fireDelay = 0.1f;
+    private float gunRange = 10;
     private int damage = 5;
     public GameObject gun;
+    public AudioClip gunSound;
     [SerializeField] private bool hasGun = false;
+    public LayerMask enemyLayer;
 
     [Header("Animation")]
     private Animator gunAnimator;
+
+    [Header("Sound")]
+    public AudioSource playerSoundSrc;
 
     private void Start()
     {
@@ -40,12 +48,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MouseMovement();
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Interact();
-        }
+        Interact();
 
-        if(hasGun == true)
+        if (hasGun == true)
         {
             gunAnimator.SetFloat("Speed", rb.velocity.magnitude);
             if (inInventory == false)
@@ -89,44 +94,62 @@ public class PlayerController : MonoBehaviour
     }
     private void Interact()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, interactDistance, interactLayer))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            //Damage if it's an enemy and if it's a pickup, then destroy it
-            //if(hit.transform.gameObject.tag == "Enemy")
-            //{
-            //
-            //}
-
-            if(hit.transform.gameObject.tag == "Pickup")
+            RaycastHit hit;
+            if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, interactDistance, interactLayer))
             {
-                //Debug.Log(hit.transform.gameObject.name);
-                switch (hit.transform.gameObject.name)
+                if (hit.transform.gameObject.tag == "Pickup")
                 {
-                    case "SCP-127Pickup":
-                        UIScript.AddItemToSlot(1, 0);
-                        hasGun = true;
-                        gun.SetActive(true);
-                        break;
-                    case "MedkitPickup":
-                        UIScript.AddItemToSlot(3, 1);
-                        break;
-                    default:
-                        Debug.Log("This pickup is named wrong or ");
-                        break;
+                    //Debug.Log(hit.transform.gameObject.name);
+                    switch (hit.transform.gameObject.name)
+                    {
+                        case "SCP-127Pickup":
+                            UIScript.AddItemToSlot(1, 0);
+                            hasGun = true;
+                            gun.SetActive(true);
+                            break;
+                        case "MedkitPickup":
+                            UIScript.AddItemToSlot(3, 1);
+                            break;
+                        default:
+                            Debug.Log("This pickup is named wrong or ");
+                            break;
+                    }
+                    Destroy(hit.transform.gameObject);
+                    //Add code to add the pickup to the inventoru to inventory
                 }
-                Destroy(hit.transform.gameObject);
-                //Add code to add the pickup to the inventoru to inventory
-            }
-            else if(hit.transform.gameObject.tag == "Door")
-            {
-                //Stuff to do when it is a door
+                else if (hit.transform.gameObject.tag == "Door")
+                {
+                    //Stuff to do when it is a door
+                }
             }
         }
     }
     private void Shooting()
     {
         gunAnimator.SetBool("Shooting", true);
+    
+        fireElapsedTime += Time.deltaTime;
+
+        if(fireElapsedTime >= fireDelay && gunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|Shooting") || fireElapsedTime >= fireDelay && gunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Armature|ShootContinous"))
+        {
+            fireElapsedTime = 0;
+
+            playerSoundSrc.PlayOneShot(gunSound);
+
+            RaycastHit hit;
+            if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, gunRange, enemyLayer))
+            {
+                Debug.Log(hit.transform.gameObject.name);
+                //if (hit.transform.gameObject.tag == "SCP NAME HERE")
+                //{ 
+                //    //do stuff here
+                //}
+           }
+           
+        }
+
     }
     private void NotShooting()
     {

@@ -55,10 +55,18 @@ public class UIScript : MonoBehaviour
     //Button Methods (Don't touch)
     public void InventoryInteractButton(RawImage iconComponent)
     {
+        var dontDestroy = false;
         switch (iconComponent.texture.name)
         {
             case "MedkitTexture":
-                AlterHealth(50);
+                if(playerController.playerHealth != 100)
+                {
+                    AlterHealth(50);
+                }
+                else
+                {
+                    dontDestroy = true;
+                }
                 break;
             case "HardWaterTexture":
                 break;
@@ -66,7 +74,10 @@ public class UIScript : MonoBehaviour
                 Debug.Log("The texture for this item is incorrectly named");
                 break;
         }
-        iconComponent.texture = null;
+        if (!dontDestroy)
+        {
+            iconComponent.texture = null;
+        }
     } 
     public void InventoryDropButton(RawImage iconComponent)
     {
